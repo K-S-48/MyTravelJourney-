@@ -1,3 +1,26 @@
+ import { initializeApp } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-app.js";
+    import { getFirestore, collection, doc, Timestamp, addDoc, deleteDoc, onSnapshot, query, orderBy } 
+    from "https://www.gstatic.com/firebasejs/13.4.0/firebase-firestore.js";      
+  
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+
+    apiKey: "AIzaSyCATimTpLFvNSxe1DJa2-ZZCR_t-LHG1Vk",
+    authDomain: "my-travel-journey-plus.firebaseapp.com",
+    projectId: "my-travel-journey-plus",
+    storageBucket: "my-travel-journey-plus.firebasestorage.app",
+    messagingSenderId: "327297448360",
+    appId: "1:327297448360:web:717543cf779b9acb39859d"
+  };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+
+    //Firestoreを使う
+    const db = getFirestore(app);
+    const ref = collection(db, "chat");
+
+
 $("#addbutton").on("click", function(){
     const country =$("#country").val();
     // localStorage.setItem("country", country);
@@ -22,7 +45,20 @@ $("#addbutton").on("click", function(){
      logs.push(log);
 
      localStorage.setItem("logs", JSON.stringify(logs));
-     $("#history").append('<div class="item">'+'<div class="item-head">'+ '<span class="item-country">' + country + '</span>' + '<span class="item-date">'+ date + '</span>' + '</div>'+'<p class="item-memo"'>+ memo + '</p>'+ '</div>');
+     $("#history").append(
+        '<div class="item">'+
+        '<div class="item-head">'+ 
+        '<span class="item-country">' + 
+        country + '</span>' + 
+        '<span class="item-date">'+ 
+        date +
+        '</span>' + 
+        '</div>'+
+        '<p class="item-memo">'
+        + memo 
+        + '</p>'
+        + '</div>'
+    );
 
     $("#country").val("");
     $("#memo").val("");
