@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/script.js" defer></script>
+    <title>My Travel Journey</title>
+</head>
+<body>
+  
+  <div class="container">
+    <img src="img/world-map.jpeg" alt="世界地図">
+    <h1 class="title">My Travel Journey</h1>
+
+    <div class="card">
+    <input type="text" id="country" placeholder="国を入力...">
+    <textarea id="memo" placeholder="メモを入力"></textarea>
+    <input type="date" id="date">
+    <button id="addbutton">＋　訪問場所を追加</button>
+    </div>
+    <div class="history-section">
+    <h2 class="history-title">訪問履歴</h2>
+    <div id="history"></div>
+    </div>
+  </div>
+</body>
+</html>
