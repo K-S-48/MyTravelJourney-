@@ -5,12 +5,7 @@
     // Your web app's Firebase configuration
     const firebaseConfig = {
 
-    apiKey: "AIzaSyCATimTpLFvNSxe1DJa2-ZZCR_t-LHG1Vk",
-    authDomain: "my-travel-journey-plus.firebaseapp.com",
-    projectId: "my-travel-journey-plus",
-    storageBucket: "my-travel-journey-plus.firebasestorage.app",
-    messagingSenderId: "327297448360",
-    appId: "1:327297448360:web:717543cf779b9acb39859d"
+    apiKey: 
   };
 
     // Initialize Firebase
