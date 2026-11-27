@@ -5,12 +5,12 @@
     // Your web app's Firebase configuration
     const firebaseConfig = {
 
-    apiKey: "",
-    authDomain: "",
-    projectId: "",
-    storageBucket: "",
-    messagingSenderId: "",
-    appId: ""
+    apiKey: "AIzaSyCATimTpLFvNSxe1DJa2-ZZCR_t-LHG1Vk",
+    authDomain: "my-travel-journey-plus.firebaseapp.com",
+    projectId: "my-travel-journey-plus",
+    storageBucket: "my-travel-journey-plus.firebasestorage.app",
+    messagingSenderId: "327297448360",
+    appId: "1:327297448360:web:717543cf779b9acb39859d"
   };
 
     // Initialize Firebase
@@ -18,47 +18,43 @@
 
     //Firestoreを使う
     const db = getFirestore(app);
-    const ref = collection(db, "chat");
+    // const ref = collection(db, "chat");
+    const historyref = collection(db, "logs")
 
 
-$("#addbutton").on("click", function(){
+$("#addbutton").on("click", async function(){
     const country =$("#country").val();
-    // localStorage.setItem("country", country);
-    // console.log(localStorage.getItem("country"));
+    // awaitはasyncがついた関数の中でしか使えないため
 
     const memo =$("#memo").val();
-    // localStorage.setItem("memo", memo);
-    // console.log(localStorage.getItem("memo"));
 
     const date =$("#date").val();
-    // localStorage.setItem("date", date);
-    // console.log(localStorage.getItem("date"));
 
     if(country !=="" && memo !=="" && date !==""){
      const log = { country: country, memo: memo, date: date };
-     // console.log(log);
+     
+    await addDoc(historyref, log);/*Jsは待たずに次に進む性質がある。addDocは読み込みに時間がかかるため、処理が終わるまで待つためにawaitを使用。 */
 
-     const jsonString = localStorage.getItem("logs");
-     const logs = JSON.parse(jsonString) || [];
-     console.log(logs);
+    //  const jsonString = localStorage.getItem("logs");
+    //  const logs = JSON.parse(jsonString) || [];
+    //  console.log(logs);
+    //  logs.push(log); Firestoreは1件ずつ保存→配列いらない
 
-     logs.push(log);
-
-     localStorage.setItem("logs", JSON.stringify(logs));
-     $("#history").append(
-        '<div class="item">'+
-        '<div class="item-head">'+ 
-        '<span class="item-country">' + 
-        country + '</span>' + 
-        '<span class="item-date">'+ 
-        date +
-        '</span>' + 
-        '</div>'+
-        '<p class="item-memo">'
-        + memo 
-        + '</p>'
-        + '</div>'
-    );
+    //  localStorage.setItem("logs", JSON.stringify(logs));
+    //  $("#history").append(
+    //     '<div class="item">'+
+    //     '<div class="item-head">'+ 
+    //     '<span class="item-country">' + 
+    //     country + '</span>' + 
+    //     '<span class="item-date">'+ 
+    //     date +
+    //     '</span>' + 
+    //     '</div>'+
+    //     '<p class="item-memo">'
+    //     + memo 
+    //     + '</p>'
+    //     + '</div>'
+    // );
 
     $("#country").val("");
     $("#memo").val("");
